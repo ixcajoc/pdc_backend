@@ -1,5 +1,5 @@
 import { Table, Column, Model, DataType, PrimaryKey, AutoIncrement, ForeignKey } from 'sequelize-typescript';
-import Company from './Company';  // Asegúrate de importar el modelo de Geografía
+import Company from './Company';
 
 @Table({
     tableName: 'geography'
@@ -25,19 +25,19 @@ class Geography extends Model {
         type: DataType.STRING(100),
         allowNull: false
     })
-    declare country: string;  // país
+    declare country: string; 
 
     @Column({
         type: DataType.STRING(100),
         allowNull: false
     })
-    declare department: string;  // departamento
+    declare department: string;  
 
     @Column({
         type: DataType.STRING(100),
         allowNull: false
     })
-    declare municipality: string;  // municipio
+    declare municipality: string;
 }
 
 export default Geography;

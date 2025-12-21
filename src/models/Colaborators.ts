@@ -2,7 +2,7 @@ import { Table, Column, Model, DataType, PrimaryKey, AutoIncrement, ForeignKey }
 import Company from './Company';
 
 @Table({
-    tableName: 'collaborators'  // Nombre de la tabla en inglés
+    tableName: 'collaborators'
 })
 class Collaborator extends Model {
     
@@ -40,13 +40,13 @@ class Collaborator extends Model {
     declare age: number;
 
     @Column({
-        type: DataType.STRING(8),  // Ajustar el tamaño según el formato del teléfono
-        allowNull: true  // Puedes cambiar a false si deseas que sea obligatorio
+        type: DataType.STRING(8),  
+        allowNull: true  
     })
-    declare phone: string;  // telefono en inglés
+    declare phone: string;
 
     @Column({
-        type: DataType.STRING(100),  // Tamaño adecuado para los correos
+        type: DataType.STRING(100),
         allowNull: false
     })
     declare email: string;
