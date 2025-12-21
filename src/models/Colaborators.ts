@@ -1,11 +1,11 @@
-import { Table, Column, Model, DataType, PrimaryKey, AutoIncrement, ForeignKey } from 'sequelize-typescript';
-import Company from './Company';
+import { Table, Column, Model, DataType, PrimaryKey, AutoIncrement, HasMany } from 'sequelize-typescript';
+import CollaboratorCompany from './ColaboratorCompany';
 
 @Table({
     tableName: 'collaborators'
 })
 class Collaborator extends Model {
-    
+
     @PrimaryKey
     @AutoIncrement
     @Column({
@@ -13,19 +13,6 @@ class Collaborator extends Model {
         allowNull: false
     })
     declare collaboratorID: number;
-
-    // @Column({
-    //     type: DataType.INTEGER,
-    //     allowNull: false
-    // })
-    // declare companyID: number;
-
-    @ForeignKey(() => Company)
-    @Column({
-        type: DataType.INTEGER,
-        allowNull: false
-    })
-    declare companyID: number;  // llave foránea con la tabla Company
 
     @Column({
         type: DataType.STRING(100),
@@ -40,7 +27,7 @@ class Collaborator extends Model {
     declare age: number;
 
     @Column({
-        type: DataType.STRING(8),  
+        type: DataType.STRING(15),  
         allowNull: true  
     })
     declare phone: string;
@@ -50,6 +37,9 @@ class Collaborator extends Model {
         allowNull: false
     })
     declare email: string;
+
+    @HasMany(() => CollaboratorCompany)
+    declare collaboratorCompanies: CollaboratorCompany[];
 }
 
 export default Collaborator;

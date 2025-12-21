@@ -1,11 +1,12 @@
-import { Table, Column, Model, DataType, PrimaryKey, AutoIncrement, ForeignKey } from 'sequelize-typescript';
-import Geography from './Geography';
+import { Table, Column, Model, DataType, PrimaryKey, AutoIncrement, HasMany } from 'sequelize-typescript';
+import Collaborator from './Colaborators';
+import CollaboratorCompany from './ColaboratorCompany';
 
 @Table({
-    tableName: 'company'
+    tableName: 'companies'
 })
 class Company extends Model {
-    
+
     @PrimaryKey
     @AutoIncrement
     @Column({
@@ -14,21 +15,14 @@ class Company extends Model {
     })
     declare companyID: number;
 
-    @ForeignKey(() => Geography)
     @Column({
-        type: DataType.INTEGER,
-        allowNull: false
-    })
-    declare geographyID: number;  // llave foránea con la tabla Geografía
-
-    @Column({
-        type: DataType.STRING(30),
+        type: DataType.STRING(20),
         allowNull: false
     })
     declare nit: string;
 
     @Column({
-        type: DataType.STRING(100),
+        type: DataType.STRING(150),
         allowNull: false
     })
     declare businessName: string;
@@ -37,11 +31,11 @@ class Company extends Model {
         type: DataType.STRING(100),
         allowNull: false
     })
-    declare tradeName: string;
+    declare commercialName: string;
 
     @Column({
         type: DataType.STRING(8),
-        allowNull: true
+        allowNull: false
     })
     declare phone: string;
 
@@ -50,6 +44,27 @@ class Company extends Model {
         allowNull: false
     })
     declare email: string;
+
+    @Column({
+        type: DataType.STRING(100),
+        allowNull: false
+    })
+    declare country: string;
+
+    @Column({
+        type: DataType.STRING(100),
+        allowNull: false
+    })
+    declare department: string;
+
+    @Column({
+        type: DataType.STRING(100),
+        allowNull: false
+    })
+    declare municipality: string;
+
+    @HasMany(() => CollaboratorCompany)
+    declare collaboratorCompanies: CollaboratorCompany[];
 }
 
 export default Company;

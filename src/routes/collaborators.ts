@@ -15,36 +15,15 @@ router.get('/:id',
 )
 
 router.post('/', 
-    // Validación
-    // body('fullName')
-    //     .notEmpty().withMessage('El nombre del colaborador no puede ir vacio'),
-    // body('price')
-    //     .isNumeric().withMessage('Valor no válido')
-    //     .notEmpty().withMessage('El precio de Producto no puede ir vacio')
-    //     .custom(value => value > 0).withMessage('Precio no válido'),
     handleInputErrors,
     createCollaborator
 )
 
 router.put('/:id', 
     param('id').isInt().withMessage('ID no válido'),
-    // body('name')
-    //     .notEmpty().withMessage('El nombre de Producto no puede ir vacio'),
-    // body('price')
-    //     .isNumeric().withMessage('Valor no válido')
-    //     .notEmpty().withMessage('El precio de Producto no puede ir vacio')
-    //     .custom(value => value > 0).withMessage('Precio no válido'),
-    // body('availability')
-    //     .isBoolean().withMessage('Valor para disponibilidad no válido'),
     handleInputErrors,
     updateCollaborator
 )
-
-// router.patch('/:id', 
-//     param('id').isInt().withMessage('ID no válido'),
-//     handleInputErrors,
-//     updateAvailability
-// )
 
 router.delete('/:id', 
     param('id').isInt().withMessage('ID no válido'),
