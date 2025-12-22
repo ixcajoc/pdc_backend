@@ -30,7 +30,8 @@ const server = express()
 // server.use(cors(corsOptions))
 
 server.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:4200',
+  // origin: process.env.FRONTEND_URL || 'http://localhost:4200',
+  origin: process.env.FRONTEND_URL || 'https://pdc-frontend-psi.vercel.app/',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
