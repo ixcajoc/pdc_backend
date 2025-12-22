@@ -4,7 +4,8 @@
   "description": "REST API's con Express - backend PDC RRHH",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --exec ts-node src/index.ts"
+    "dev": "nodemon --exec ts-node src/index.ts",
+    "build": "tsc"
   },
   "author": "Denis Ixcajoc",
   "license": "ISC",
