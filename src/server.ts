@@ -1,6 +1,7 @@
 import express from 'express' 
 import colors from 'colors'
 import routes  from './routes'
+import  cors, { CorsOptions } from 'cors'
 
 import db from './config/db'
 
@@ -20,8 +21,33 @@ connectDB()
 // Instancia de express
 const server = express()
 
+// permitir conexxiones
+// const corsOptions : CorsOptions = {
+//     origin: function(origin,callback){
+//         console.log(origin)
+//     }
+// }
+// server.use(cors(corsOptions))
+
+server.use(cors({
+  origin: process.env.FRONTEND_URL || 'http://localhost:4200',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+}));
+
+
 // Leer datos de formularios
 server.use(express.json())
+
+// CORS
+server.use(cors({
+  origin: process.env.FRONTEND_URL || 'http://localhost:4200',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+}));
+
 
 server.use('/api', routes);
 
