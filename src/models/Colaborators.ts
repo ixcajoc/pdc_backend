@@ -15,6 +15,13 @@ class Collaborator extends Model {
     declare collaboratorID: number;
 
     @Column({
+        type: DataType.INTEGER,
+        allowNull: false
+    })
+    declare companyID: number;
+
+
+    @Column({
         type: DataType.STRING(100),
         allowNull: false
     })
